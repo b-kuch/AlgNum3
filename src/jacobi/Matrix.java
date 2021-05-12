@@ -1,3 +1,5 @@
+package jacobi;
+
 public class Matrix {
     // macierz 4x4
     double[][] a = new double[4][4];
