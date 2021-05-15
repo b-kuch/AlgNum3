@@ -3,6 +3,9 @@ package jacobi;
 public class Main {
     public static void main(String[] args)
     {
-        System.out.println("AlgNum3");
+        Matrix A = new Matrix(4);
+        Matrix B = new Matrix(4, 1, 1);
+        System.out.println(A);
+        System.out.println(A.multiply(B));
     }
 }
