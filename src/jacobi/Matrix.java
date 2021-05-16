@@ -3,7 +3,6 @@ package jacobi;
 import java.util.Arrays;
 
 public class Matrix {
-    // macierz 4x4
     double[][] a;
 
     Matrix(int numRows, int numCols, double value) {
@@ -18,8 +17,8 @@ public class Matrix {
         for (int i=0; i<numRows; i++) {
             Arrays.fill(a[i], value);
         }
-
     }
+
     Matrix(double[] a, int numRows, int numCols) {
         try {
             if (a.length != numCols*numRows) {
@@ -52,7 +51,7 @@ public class Matrix {
         int numCols = matrix.numCols();
         this.a = new double[numRows][numCols];
         for (int i=0; i<numRows; i++) {
-            System.arraycopy(matrix.a[i], numCols*i, this.a[i], 0, numCols);
+            System.arraycopy(matrix.a[i], 0, this.a[i], 0, numCols);
         }
     }
 
@@ -69,6 +68,7 @@ public class Matrix {
         else
             return 0;
     }
+
     Matrix add(Matrix other) {
         try {
             if (this.numRows() != other.numRows() || this.numCols() != other.numCols()) {
@@ -86,6 +86,7 @@ public class Matrix {
         return sum;
     }
 
+    /** Matrix multiplication */
     Matrix multiply(Matrix other) {
         try {
             if (this.numCols() != other.numRows() ) {
@@ -108,22 +109,46 @@ public class Matrix {
         return product;
     }
 
+    /** Scalar multiplication */
+    Matrix multiply(double scalar) {
+        Matrix product = new Matrix(this);
+        for (int i = 0; i < product.numRows(); i++) {
+            for (int j = 0; j < product.numCols(); j++) {
+                product.a[i][j] *= scalar;
+            }
+        }
+        return product;
+    }
+
+    double sumValues() {
+        double sum = 0;
+        for (int i = 0; i < numRows(); i++) {
+            for (int j = 0; j < numCols(); j++) {
+                sum += this.a[i][j];
+            }
+        }
+        return sum;
+    }
+
+    static String format(double number) {
+        return String.format("%+.2f", number);
+    }
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
         builder.append("┌ ");
         for (int i = 0; i < numCols(); i++) {
-            builder.append(a[0][i]);
-            builder.append(" ");
+            builder.append(format(a[0][i]));
+            builder.append("\t");
         }
         builder.append("┐\n");
 
         for (int i = 1; i < numRows() - 1; i++) {
             builder.append("│ ");
             for (int j = 0; j < numCols(); j++) {
-                builder.append(a[i][j]);
-                builder.append(" ");
+                builder.append(format(a[i][j]));
+                builder.append("\t");
             }
             builder.append("│\n");
         }
@@ -131,13 +156,13 @@ public class Matrix {
         if (numRows() > 1) {
             builder.append("└ ");
             for (int i = 0; i < numCols(); i++) {
-                builder.append(a[numRows()-1][i]);
-                builder.append(" ");
+                builder.append(format(a[numRows()-1][i]));
+                builder.append("\t");
             }
             builder.append("┘\n");
         }
-
-
         return builder.toString();
     }
+
+
 }
