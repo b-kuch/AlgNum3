@@ -102,9 +102,10 @@ public class JacobiMethod {
 
     @Override
     public String toString() {
-        return "Macierz B_j:\n" + B.toString()
-                + "\n aktualne przybliżenie:\n"
-                + x_0.toString();
+        return "aktualne przybliżenie (x_0):\n"
+                + x_0.toString()
+                + "\n wyniki równań gdy x = x_0\n"
+                + A.multiply(x_0).toString();
     }
 
 }

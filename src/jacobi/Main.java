@@ -52,7 +52,8 @@ public class Main {
 //                new Matrix(lx_0, 3,1)
 //        );
 //        System.out.println(method);
-//        method.iterate(26);
+//        method.iterateOnce();
+//        System.out.println(method.calculateError());
 //        System.out.println(method);
     }
 }
