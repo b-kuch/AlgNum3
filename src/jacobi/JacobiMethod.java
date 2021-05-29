@@ -68,6 +68,8 @@ public class JacobiMethod {
 
     Matrix iterateOnce(){
         x_0 = B.multiply(x_0).add(bj);
+        System.out.println(x_0);
+        System.out.println("Błąd sumaryczny wyniósł:" + calculateError());
         return x_0;
     }
 
