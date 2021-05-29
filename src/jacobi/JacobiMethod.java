@@ -102,9 +102,9 @@ public class JacobiMethod {
 
     @Override
     public String toString() {
-        return "aktualne przybliżenie (x_0):\n"
+        return "Obliczone przybliżenie:\n"
                 + x_0.toString()
-                + "\n wyniki równań gdy x = x_0\n"
+                + "\n wyniki równań po podstawieniu przybliżenia\n"
                 + A.multiply(x_0).toString();
     }
 
