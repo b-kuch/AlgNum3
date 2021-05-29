@@ -8,9 +8,11 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        double epsilon;
-        System.out.print("Podaj epsilon: ");
-        epsilon = input.nextDouble();
+        double epsilon = -1;
+        while (epsilon<0) {
+            System.out.print("Podaj epsilon: ");
+            epsilon = input.nextDouble();
+        }
 
 //        double[] lx_0 = {1, 1, 1, 1};
         double[] lx_0 = new double[4];
